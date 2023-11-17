@@ -152,3 +152,58 @@ for i in range(batches):
 # Optionally, load all numpy files
 features_list = [np.load(features_file) for features_file in sorted(features_path.glob("*.npy"))]
 
+# Initialize Pinecone client
+pinecone.init(api_key="4628f9ab-aef0-4667-8568-c6a6b29567e8", environment="gcp-starter")
+index = pinecone.Index("imageindex")
+
+
+values=[]
+for x in feature_vectors_list:
+  for idx in range(len(x[0])):
+      try:
+         obj={
+            "id":x[0][idx],
+            "values":x[1][idx]
+            }
+         values.append(obj)
+      except Exception as e:
+          # Handle upsert errors
+          print(f'Problem with upsert: {e}')
+
+
+#inserting embeddings in batches
+def split_into_batches(lst, batch_size):
+    return [lst[i:i + batch_size] for i in range(0, len(lst), batch_size)]
+batches = split_into_batches(values, 100)
+
+#Inserting values in pinecone index
+for batch in batches:
+  index.upsert(vectors=batch)
+
+
+def encode_search_query(search_query):
+    with torch.no_grad():
+        # Encode and normalize the search query using CLIP
+        text_encoded = model.encode_text(clip.tokenize(search_query).to(device))
+        text_encoded /= text_encoded.norm(dim=-1, keepdim=True)
+
+    # Retrieve the feature vector
+    return text_encoded
+
+def find_best_matches(text_features, batch_features, image_ids, results_count=3):
+  # Compute the similarity between the search query and each image using the Cosine similarity
+  similarities = (image_features @ text_features.T).squeeze(1)
+   # Sort the images by their similarity score
+  best_image_idx = (-similarities).argsort()
+
+  # Return the image IDs of the best matches
+  return [image_ids[i] for i in best_image_idx[:results_count]]
+
+def search(search_query, image_features, image_ids, results_count=3):
+  # Encode the search query
+  text_features = encode_search_query(search_query)
+
+  # Find the best matches
+  return find_best_matches(text_features, image_features, image_ids, results_count)
+
+
