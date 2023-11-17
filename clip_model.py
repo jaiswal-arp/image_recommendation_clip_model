@@ -206,4 +206,24 @@ def search(search_query, image_features, image_ids, results_count=3):
   # Find the best matches
   return find_best_matches(text_features, image_features, image_ids, results_count)
 
-
+#
+# Search for images and visualize the results
+#
+search_queries = ['A Blue Pant', 
+                  'A black Denim',
+                  'A rainbow sweater'
+                  ]
+n_results_per_query = 3
+ 
+fig, ax = plt.subplots(len(search_queries), n_results_per_query + 1, figsize=(15, 10))    
+for i, search_query in enumerate(search_queries):
+    result_image_ids = search(search_query, image_features, image_ids, n_results_per_query)
+    
+    ax[i, 0].text(0.0, 0.5, search_query)
+    ax[i, 0].axis('off')
+    for j, image_id in enumerate(result_image_ids):
+        img_path=f'{root_path}/{image_id}.jpg'  
+        print(img_path)
+        image = Image.open(f'{root_path}/{image_id}.jpg')
+        ax[i, j+1].imshow(image)
+        ax[i, j+1].axis('off')
