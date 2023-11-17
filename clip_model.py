@@ -9,6 +9,7 @@ import pandas as pd
 from PIL import Image
 import clip
 import torch
+import csv
 import math
 import pinecone
 import torch.nn.functional as F
@@ -209,15 +210,22 @@ def search(search_query, image_features, image_ids, results_count=3):
 #
 # Search for images and visualize the results
 #
-search_queries = ['A Blue Pant', 
+search_queries = ['Leather Biker Jackets',
+                  'Graphic Tees Collection',
+                  'Athletic Tanks for Gym',
+                  'Pullover Hooded Sweatshirts',
+                  'Ripped Denim Jeans',
+                  'A Blue Pant', 
                   'A black Denim',
                   'A rainbow sweater'
                   ]
 n_results_per_query = 3
- 
+results_dict= {} 
+
 fig, ax = plt.subplots(len(search_queries), n_results_per_query + 1, figsize=(15, 10))    
 for i, search_query in enumerate(search_queries):
     result_image_ids = search(search_query, image_features, image_ids, n_results_per_query)
+    results_dict[search_query] = result_image_ids
     
     ax[i, 0].text(0.0, 0.5, search_query)
     ax[i, 0].axis('off')
@@ -227,3 +235,27 @@ for i, search_query in enumerate(search_queries):
         image = Image.open(f'{root_path}/{image_id}.jpg')
         ax[i, j+1].imshow(image)
         ax[i, j+1].axis('off')
+
+
+
+
+# Function to save results to a CSV file
+def save_results_to_csv(results, csv_filename):
+    with open(csv_filename, 'w', newline='') as csvfile:
+        fieldnames = ['Query', 'Image_IDs']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        # Write the header
+        writer.writeheader()
+
+        # Write the results for each query
+        for query, image_ids in results.items():
+            writer.writerow({'Query': query, 'Image_IDs': ', '.join(image_ids)})
+
+
+#Save results to CSV
+csv_filename = 'search_results.csv'
+save_results_to_csv(results_dict, csv_filename)
+
+# Display the CSV filename
+print(f'Results saved to {csv_filename}')
