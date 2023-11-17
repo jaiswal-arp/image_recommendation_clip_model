@@ -190,7 +190,7 @@ def encode_search_query(search_query):
     # Retrieve the feature vector
     return text_encoded
 
-def find_best_matches(text_features, batch_features, image_ids, results_count=3):
+def find_best_matches(text_features, image_features, image_ids, results_count=3):
   # Compute the similarity between the search query and each image using the Cosine similarity
   similarities = (image_features @ text_features.T).squeeze(1)
    # Sort the images by their similarity score
