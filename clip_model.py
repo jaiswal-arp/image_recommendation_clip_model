@@ -66,17 +66,15 @@ for ax, im in zip(grid, images_files[:rows*columns]):
 plt.show()
 
 
-# Set the root path to the 'MEN' folder
+# Set the root path 
 root_path = Path('/content/test/img/img/MEN')
 
-# List all subfolders within the 'MEN' folder
+# List all subfolders 
 category_folders = [folder for folder in root_path.iterdir() if folder.is_dir()]
 print(category_folders)
 
 
 # Initialize CLIP model and preprocessing functions
-# Make sure 'model' and 'preprocess' are properly defined in your code
-
 # Set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
