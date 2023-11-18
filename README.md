@@ -2,8 +2,8 @@
 ----- 
 > <br>
 
-> [Codelab Slides] <br>
-> [Application Demo/Presentation]
+> [Codelab Slides](https://codelabs-preview.appspot.com/?file_id=1frMLkivAY2tr6b0-LcjpHsZ0saO_uKmrGwmPzEuM0G4/edit#0) <br>
+> [Application Demo/Presentation](https://drive.google.com/file/d/1JhCJvQfe3wZ_0PYzdnxyyRlfYT-umas-/view?usp=drive_link)
 
 ## Index
   - [Objective](#objective)
