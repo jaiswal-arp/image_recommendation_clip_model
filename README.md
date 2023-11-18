@@ -32,8 +32,8 @@
 │   │   ├── main.py    # Streamlit app implementation
 │   │   ├── my_utils.py  # Custom utilities
 │   │   ├── README.md   # Documentation for Streamlit app
-│   │   ├── clip_model.py  # Implementation of CLIP model (assuming it's related to the app)
-│   │   ├── requirements.txt  # Requirements for Streamlit app
+├── clip_model.py  # Implementation of CLIP model (assuming it's related to the app)
+├── requirements.txt  # Requirements for Streamlit app
 │
 ├── search_results.csv  # CSV file containing search results
 │
