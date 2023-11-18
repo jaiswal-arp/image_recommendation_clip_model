@@ -1,21 +1,20 @@
 import streamlit as st
 import requests
 import boto3
+import os
 from PIL import Image
 from io import BytesIO
 from src.my_utils import compute_clip_features
+from dotenv import load_dotenv
 
 st.title("Assignment 04 - Image Similarity")
 
 base_url = "http://0.0.0.0:8888/"
 
-
-AWS_ACCESS_KEY = "AKIA5ZEZJULVDAZBQH7M"
-AWS_ACCESS_SECRET_KEY = "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"
-
+load_dotenv()
 
 def display_image_from_s3(text_path):
-    s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_ACCESS_SECRET_KEY)
+    s3 = boto3.client('s3', aws_access_key_id= os.environ.get("AWS_ACCESS_KEY"), aws_secret_access_key=os.environ.get("AWS_ACCESS_SECRET_KEY"))
     st.text("Closest Images")
     for i,j in enumerate(text_path):
         try:
