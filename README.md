@@ -1,7 +1,5 @@
 # Assignment_04
 ----- 
-> <br>
-
 > [Codelab Slides](https://codelabs-preview.appspot.com/?file_id=1frMLkivAY2tr6b0-LcjpHsZ0saO_uKmrGwmPzEuM0G4/edit#0) <br>
 
 ## Index
