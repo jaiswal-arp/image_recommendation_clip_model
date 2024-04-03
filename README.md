@@ -29,7 +29,7 @@ Fashion Recommendation System Using Clip Model
 │   │   ├── main.py    # Streamlit app implementation
 │   │   ├── my_utils.py  # Custom utilities
 │   │   ├── README.md   # Documentation for Streamlit app
-├── clip_model.py  # Implementation of CLIP model (assuming it's related to the app)
+├── clip_model.py  # Implementation of CLIP model 
 ├── requirements.txt  # Requirements for Streamlit app
 │
 ├── search_results.csv  # CSV file containing search results
@@ -40,7 +40,7 @@ Fashion Recommendation System Using Clip Model
 - Clone the repo to get all the source code on your machine
 
 ```bash
-git clone https://github.com/AlgoDM-Fall2023-Team4/Assignment_04.git
+git clone <path>
 ```
 - All the code related to the streamlit is in the streamlit/ directory of the project
 
