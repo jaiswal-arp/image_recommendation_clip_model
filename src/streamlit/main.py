@@ -7,7 +7,7 @@ from io import BytesIO
 from src.my_utils import compute_clip_features
 from dotenv import load_dotenv
 
-st.title("Assignment 04 - Image Similarity")
+st.title("Image Similarity")
 
 load_dotenv()
 
