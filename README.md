@@ -20,6 +20,9 @@ Fashion Recommendation Application Using Clip Model
 ├── README.txt          # Project README file
 │
 ├── src/
+├── clip_model.py  # Implementation of CLIP model
+│
+├── search_results.csv  # CSV file containing search results
 │   ├── fastapi/
 │   │   ├── __init__.py
 │   │   ├── main.py    # FAST API implementation
@@ -29,11 +32,6 @@ Fashion Recommendation Application Using Clip Model
 │   │   ├── main.py    # Streamlit app implementation
 │   │   ├── my_utils.py  # Custom utilities
 │   │   ├── README.md   # Documentation for Streamlit app
-├── clip_model.py  # Implementation of CLIP model 
-├── requirements.txt  # Requirements for Streamlit app
-│
-├── search_results.csv  # CSV file containing search results
-│
 ├── requirements.txt    # Project-wide requirements file
 
 ## How to run the application
