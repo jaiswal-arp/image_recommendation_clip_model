@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 
 st.title("Assignment 04 - Image Similarity")
 
-base_url = "http://0.0.0.0:8888/"
-
 load_dotenv()
 
 def display_image_from_s3(text_path):
