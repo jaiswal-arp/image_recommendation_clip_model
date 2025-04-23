@@ -13,7 +13,7 @@ Image Recommendation Application Using Clip Model
 
   ## Project Structure
 ```
-  fashion-recommendation-app/
+  image-recommendation-app/
 │
 ├── Images/             # Directory to store images
 │
